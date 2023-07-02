@@ -1,6 +1,3 @@
-import React from 'react';
-import '../styles/Contacts.css';
-import Swal from 'sweetalert2'
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllContacts } from 'redux/contacts/contact-selectors';
 import { getFilteredContacts } from 'redux/filter/filter-selectors';
@@ -9,6 +6,7 @@ import {
   fetchAllContacts,
   fetchDeleteContact,
 } from 'redux/contacts/contact-operations';
+import css from './contacts.module.scss';
 
 const Contacts = () => {
   const isLoading = useSelector(store => store.contacts.isLoading);
@@ -21,23 +19,16 @@ const Contacts = () => {
 
   const handleDelete = id => {
     dispatch(fetchDeleteContact(id));
-    Swal.fire({
-      position: 'center',
-      icon: 'error',
-      title: 'Your contact was deleted',
-      showConfirmButton: false,
-      timer: 1500
-    })
   };
   const elements = filterContactsContacts?.map(({ name, id, number }) => {
     return (
-      <li className="item" key={id} name={id}>
-        <p className="text">
+      <li className={css.item} key={id} name={id}>
+        <p className={css.text}>
           {name}: {number}
         </p>
         <button
           type="button"
-          className="button"
+          className={css.button}
           onClick={() => handleDelete(id)}
         >
           Delete
@@ -51,7 +42,7 @@ const Contacts = () => {
   return (
     <>
       {isLoading && <p>Loading...</p>}
-      <ul className="list">{elements}</ul>
+      <ul className={css.list}>{elements}</ul>
     </>
   );
 };
