@@ -7,6 +7,7 @@ import {
   fetchDeleteContact,
 } from 'redux/contacts/contact-operations';
 import css from './contacts.module.scss';
+import Swal from 'sweetalert2'
 
 const Contacts = () => {
   const isLoading = useSelector(store => store.contacts.isLoading);
@@ -19,6 +20,13 @@ const Contacts = () => {
 
   const handleDelete = id => {
     dispatch(fetchDeleteContact(id));
+    Swal.fire({
+      position: 'center',
+      icon: 'error',
+      title: 'Your contact was deleted',
+      showConfirmButton: false,
+      timer: 1500
+    })
   };
   const elements = filterContactsContacts?.map(({ name, id, number }) => {
     return (

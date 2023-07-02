@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import css from './form.module.scss';
+import Swal from 'sweetalert2'
 import { useDispatch } from 'react-redux';
 import { fetchAddContact } from 'redux/contacts/contact-operations';
+
 
 const Form = () => {
   const dispatch = useDispatch();
@@ -11,6 +13,13 @@ const Form = () => {
   const formSumbit = e => {
     e.preventDefault();
     dispatch(fetchAddContact({ name, number }));
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: `${name} was added...`,
+      showConfirmButton: false,
+      timer: 1500
+    });
     reset();
   };
   const reset = () => {
