@@ -15,10 +15,10 @@
   text-decoration: none;
   transition: all linear 250ms;
   &:hover {
-    background-color: grey;
+    background-color: #e6e9f0;
   }
 }
 
 .link:global(.active) {
-  color: red;
+  color: #e05915;
 }

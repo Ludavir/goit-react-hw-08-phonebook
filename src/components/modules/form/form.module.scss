@@ -24,15 +24,15 @@
 }
 .button {
   background-color: transparent;
-  color: purple;
-  border: 1px solid purple;
+  color: #431c5d;
+  border: 1px solid #431c5d;
   padding: 10px 15px;
   cursor: pointer;
   font-size: 15px;
   border-radius: 10px;
   transition: all linear 250ms;
   &:hover {
-    background-color: purple;
-    color: #fff;
+    background-color: #431c5d;
+    color: #e6e9f0;
   }
 }
